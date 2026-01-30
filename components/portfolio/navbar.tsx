@@ -1,28 +1,32 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
-]
+];
 
 export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo / Name */}
-          <a href="#" className="text-lg font-bold text-foreground">
-            SN
+          <a
+            href="#"
+            className="flex items-center gap-2 text-lg font-bold text-foreground"
+          >
+            <img src="/logo.svg" alt="SN Logo" className="h-8 w-8" />
+            <span>SN</span>
           </a>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
@@ -34,17 +38,21 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
-            <Button 
+            <Button
               asChild
               size="sm"
               className="bg-primary hover:bg-primary/90 text-primary-foreground"
             >
-              <a href="https://github.com/sitnascode" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://github.com/sitnascode"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 GitHub
               </a>
             </Button>
           </div>
-          
+
           {/* Mobile Menu Button */}
           <button
             type="button"
@@ -55,7 +63,7 @@ export function Navbar() {
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
-        
+
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden py-4 border-t border-border">
@@ -70,12 +78,16 @@ export function Navbar() {
                   {link.label}
                 </a>
               ))}
-              <Button 
+              <Button
                 asChild
                 size="sm"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground w-fit"
               >
-                <a href="https://github.com/sitnascode" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://github.com/sitnascode"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   GitHub
                 </a>
               </Button>
@@ -84,5 +96,5 @@ export function Navbar() {
         )}
       </div>
     </nav>
-  )
+  );
 }
